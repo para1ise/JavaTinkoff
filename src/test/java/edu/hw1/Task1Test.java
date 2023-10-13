@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static edu.hw1.Main.minutesToSeconds;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class SampleTest {
+public class Task1Test {
     @Test
     @DisplayName("Фильтрация корректных данных")
     void filterCorrectData() {

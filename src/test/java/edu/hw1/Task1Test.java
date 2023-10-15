@@ -2,7 +2,7 @@ package edu.hw1;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static edu.hw1.Main.minutesToSeconds;
+import static edu.hw1.Task1.minutesToSeconds;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Task1Test {

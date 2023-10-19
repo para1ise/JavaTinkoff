@@ -5,18 +5,17 @@ public class Task1 {
     }
 
     public static int minutesToSeconds(String str) {
-        int val = str.indexOf(':');
-        int ans = -1;
-        final int SECONDS = 60;
-        if (val != -1) {
+        final int SECONDS_IN_MINUTE = 60;
+        int result = -1;
+        if (str.indexOf(':') != -1) {
             String[] time = str.split(":");
-            int minute = Integer.parseInt(time[0]);
-            int second = Integer.parseInt(time[1]);
+            int minutes = Integer.parseInt(time[0]);
+            int seconds = Integer.parseInt(time[1]);
 
-            if (minute >= 0 && second >= 0 && second < SECONDS) {
-                ans = minute * SECONDS + second;
+            if (minutes >= 0 && seconds >= 0 && seconds < SECONDS_IN_MINUTE) {
+                result = minutes * SECONDS_IN_MINUTE + seconds;
             }
         }
-        return ans;
+        return result;
     }
 }

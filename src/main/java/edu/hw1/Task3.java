@@ -4,27 +4,27 @@ public class Task3 {
     private Task3() {
     }
 
-    public static boolean isNestable(int[] arr1, int[] arr2) {
-        return min(arr1) > min(arr2) && max(arr1) < max(arr2);
+    public static boolean isNestable(int[] array1, int[] array2) {
+        return minimumOfArray(array1) > minimumOfArray(array2) && maximumOfArray(array1) < maximumOfArray(array2);
     }
 
-    private static int min(int[] arr) {
-        int res = arr[0];
-        for (int i = 1; i < arr.length; ++i) {
-            if (arr[i] < res) {
-                res = arr[i];
+    private static int minimumOfArray(int[] array) {
+        int result = array[0];
+        for (int i = 1; i < array.length; ++i) {
+            if (array[i] < result) {
+                result = array[i];
             }
         }
-        return res;
+        return result;
     }
 
-    private static int max(int[] arr) {
-        int res = arr[0];
-        for (int i = 1; i < arr.length; ++i) {
-            if (arr[i] > res) {
-                res = arr[i];
+    private static int maximumOfArray(int[] array) {
+        int result = array[0];
+        for (int i = 1; i < array.length; ++i) {
+            if (array[i] > result) {
+                result = array[i];
             }
         }
-        return res;
+        return result;
     }
 }

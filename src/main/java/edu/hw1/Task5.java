@@ -17,23 +17,23 @@ public class Task5 {
         } else if (count % 2 == 1) {
             flag = false;
         } else {
-            String str = String.valueOf(number);
-            StringBuilder newStr = new StringBuilder(count / 2);
+            String string = String.valueOf(number);
+            StringBuilder newString = new StringBuilder(count / 2);
             for (int i = 1; i < count; i += 2) {
-                newStr.append(Integer.parseInt(String.valueOf(str.charAt(i - 1)))
-                    + Integer.parseInt(String.valueOf(str.charAt(i))));
+                newString.append(Integer.parseInt(String.valueOf(string.charAt(i - 1)))
+                    + Integer.parseInt(String.valueOf(string.charAt(i))));
             }
-            flag = isPalindromeDescendant(Integer.parseInt(newStr.toString()));
+            flag = isPalindromeDescendant(Integer.parseInt(newString.toString()));
         }
         return flag;
     }
 
     private static boolean isPalindrome(int number) {
         int flag = 1;
-        String str = String.valueOf(number);
+        String string = String.valueOf(number);
         int count = countDigits(number);
         for (int i = 0; i < count / 2; ++i) {
-            if (str.charAt(i) != str.charAt(count - 1 - i)) {
+            if (string.charAt(i) != string.charAt(count - 1 - i)) {
                 flag = 0;
                 break;
             }

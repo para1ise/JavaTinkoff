@@ -29,10 +29,4 @@ public class Task4Test {
     void filterIncorrectData1() {
         assertThat(fixString("")).isEqualTo("");
     }
-
-    @Test
-    @DisplayName("Проверка некорректных данных2")
-    void filterIncorrectData2() {
-        assertThat(fixString(null)).isEqualTo(null);
-    }
 }

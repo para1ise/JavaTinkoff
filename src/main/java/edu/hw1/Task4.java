@@ -4,19 +4,16 @@ public class Task4 {
     private Task4() {
     }
 
-    public static String fixString(String str) {
-        if (str == null) {
-            return null;
+    public static String fixString(String string) {
+        int length = string.length();
+        StringBuilder newString = new StringBuilder(length);
+        for (int i = 1; i < length; i += 2) {
+            newString.append(string.charAt(i));
+            newString.append(string.charAt(i - 1));
         }
-        int len = str.length();
-        StringBuilder newStr = new StringBuilder(len);
-        for (int i = 1; i < len; i += 2) {
-            newStr.append(str.charAt(i));
-            newStr.append(str.charAt(i - 1));
+        if (length % 2 == 1) {
+            newString.append(string.charAt(length - 1));
         }
-        if (len % 2 == 1) {
-            newStr.append(str.charAt(len - 1));
-        }
-        return newStr.toString();
+        return newString.toString();
     }
 }

@@ -4,72 +4,71 @@ import java.util.Arrays;
 import static edu.hw1.Task2.countDigits;
 
 public class Task6 {
-    private final static int KAPREKAR = 6174;
+    private static final int KAPREKAR = 6174;
+    private static final int TEN = 10;
 
     private Task6() {
     }
 
-    @SuppressWarnings("MagicNumber")
     public static int countK(int number) {
-        if (number > 9999 || number < 1000 || isEqualsDigits(number)) {
+        final int MAX_OF_FOUR_DIGIT_NUMBER = 9999;
+        final int MIN_OF_FOUR_DIGIT_NUMBER = 1000;
+        if (number > MAX_OF_FOUR_DIGIT_NUMBER || number < MIN_OF_FOUR_DIGIT_NUMBER || isEqualsDigitsInNumber(number)) {
             return -1;
         }
         if (number == KAPREKAR) {
             return 0;
         } else {
-            int increaseDigitsNum = increaseDigits(number);
-            int decreaseDigitsNum = decreaseDigits(number);
-            int newNumber = decreaseDigitsNum - increaseDigitsNum;
+            int ascendingDigitsNum = sortByAscendingDigitsOfNumber(number);
+            int descendingDigitsNum = sortByDescendingDigitsOfNumber(number);
+            int newNumber = descendingDigitsNum - ascendingDigitsNum;
             return 1 + countK(newNumber);
         }
     }
 
-    @SuppressWarnings("MagicNumber")
-    private static boolean isEqualsDigits(int n) {
-        int flag = 1;
-        int tmp = n;
-        int tmpr = n % 10;
+    private static boolean isEqualsDigitsInNumber(int number) {
+        boolean flag = true;
+        int tmp = number;
+        int tmp1 = number % TEN;
         while (tmp > 0) {
-            if (tmp % 10 != tmpr) {
-                flag = 0;
+            if (tmp % TEN != tmp1) {
+                flag = false;
                 break;
             }
-            tmp /= 10;
+            tmp /= TEN;
         }
-        return flag == 1;
+        return flag;
     }
 
-    @SuppressWarnings("MagicNumber")
-    private static int increaseDigits(int n) {
-        int count = countDigits(n);
-        int[] arr = new int[count];
-        int tmp = n;
-        int res = 0;
+    private static int sortByAscendingDigitsOfNumber(int number) {
+        int count = countDigits(number);
+        int[] arrayOfDigits = new int[count];
+        int tmp = number;
+        int result = 0;
         for (int i = 0; i < count; ++i) {
-            arr[i] = tmp % 10;
-            tmp /= 10;
+            arrayOfDigits[i] = tmp % TEN;
+            tmp /= TEN;
         }
-        Arrays.sort(arr);
+        Arrays.sort(arrayOfDigits);
         for (int i = 0; i < count; ++i) {
-            res = res * 10 + arr[i];
+            result = result * TEN + arrayOfDigits[i];
         }
-        return res;
+        return result;
     }
 
-    @SuppressWarnings("MagicNumber")
-    private static int decreaseDigits(int n) {
-        int count = countDigits(n);
-        int[] arr = new int[count];
-        int tmp = n;
-        int res = 0;
+    private static int sortByDescendingDigitsOfNumber(int number) {
+        int count = countDigits(number);
+        int[] arrayOfDigits = new int[count];
+        int tmp = number;
+        int result = 0;
         for (int i = 0; i < count; ++i) {
-            arr[i] = tmp % 10;
-            tmp /= 10;
+            arrayOfDigits[i] = tmp % TEN;
+            tmp /= TEN;
         }
-        Arrays.sort(arr);
+        Arrays.sort(arrayOfDigits);
         for (int i = count - 1; i >= 0; --i) {
-            res = res * 10 + arr[i];
+            result = result * TEN + arrayOfDigits[i];
         }
-        return res;
+        return result;
     }
 }
